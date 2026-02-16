@@ -235,20 +235,43 @@
         /* Problem/Solution Section */
         .problem-solution {
             padding: 8rem 5%;
-            background: var(--bg-light);
-            color: var(--text-dark);
+            background: linear-gradient(180deg, var(--bg-dark) 0%, #0f1a2e 50%, var(--bg-dark) 100%);
+            color: var(--text-primary);
+            position: relative;
+        }
+
+        .problem-solution::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(ellipse at 20% 50%, rgba(220, 38, 38, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 50%, rgba(34, 197, 94, 0.08) 0%, transparent 50%);
+            pointer-events: none;
         }
 
         .section-header {
             text-align: center;
             margin-bottom: 4rem;
+            position: relative;
+            z-index: 1;
         }
 
         .section-header h2 {
             font-family: 'Playfair Display', serif;
             font-size: clamp(2rem, 4vw, 3rem);
             margin-bottom: 1rem;
-            color: var(--primary);
+            color: var(--text-primary);
+        }
+        
+        .problem-solution .section-header h2 {
+            background: linear-gradient(135deg, #fff, var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .ps-grid {
@@ -257,21 +280,91 @@
             gap: 3rem;
             max-width: 1200px;
             margin: 0 auto;
+            position: relative;
+            z-index: 1;
         }
 
         .problem-card, .solution-card {
             padding: 2.5rem;
             border-radius: 24px;
+            position: relative;
+            overflow: hidden;
         }
 
         .problem-card {
-            background: linear-gradient(135deg, #fef2f2, #fff);
-            border: 1px solid #fecaca;
+            background: linear-gradient(145deg, #1a0a0a 0%, #2d1515 50%, #1f0f0f 100%);
+            border: 1px solid rgba(220, 38, 38, 0.3);
+            box-shadow: 0 20px 60px rgba(220, 38, 38, 0.15), inset 0 1px 0 rgba(255,255,255,0.05);
+        }
+
+        .problem-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #dc2626, #ef4444, #dc2626);
         }
 
         .solution-card {
-            background: linear-gradient(135deg, #f0fdf4, #fff);
-            border: 1px solid #bbf7d0;
+            background: linear-gradient(145deg, #0a1a0f 0%, #0d2818 50%, #0a1a0f 100%);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            box-shadow: 0 20px 60px rgba(34, 197, 94, 0.15), inset 0 1px 0 rgba(255,255,255,0.05);
+        }
+
+        .solution-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #22c55e, #4ade80, #22c55e);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .card-header-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .problem-card .card-header-icon {
+            background: linear-gradient(135deg, #dc2626, #b91c1c);
+            box-shadow: 0 0 30px rgba(220, 38, 38, 0.4);
+            color: white;
+        }
+
+        .solution-card .card-header-icon {
+            background: linear-gradient(135deg, #22c55e, #16a34a);
+            box-shadow: 0 0 30px rgba(34, 197, 94, 0.4);
+            color: white;
+        }
+
+        .card-header h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+
+        .problem-card .card-header h3 {
+            color: #fca5a5;
+        }
+
+        .solution-card .card-header h3 {
+            color: #86efac;
         }
 
         .ps-item {
@@ -279,23 +372,71 @@
             align-items: flex-start;
             gap: 1rem;
             margin-bottom: 1.5rem;
+            padding: 1rem;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .ps-item:hover {
+            transform: translateX(5px);
+        }
+
+        .problem-card .ps-item {
+            background: rgba(220, 38, 38, 0.1);
+            border-left: 3px solid #dc2626;
+        }
+
+        .solution-card .ps-item {
+            background: rgba(34, 197, 94, 0.1);
+            border-left: 3px solid #22c55e;
         }
 
         .ps-item:last-child {
             margin-bottom: 0;
         }
 
-        .ps-item i {
-            font-size: 1.25rem;
-            margin-top: 0.2rem;
+        .ps-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 0.9rem;
         }
 
-        .problem-card .ps-item i {
-            color: #dc2626;
+        .problem-card .ps-icon {
+            background: linear-gradient(135deg, #dc2626, #991b1b);
+            color: white;
+            box-shadow: 0 0 15px rgba(220, 38, 38, 0.5);
         }
 
-        .solution-card .ps-item i {
-            color: #16a34a;
+        .solution-card .ps-icon {
+            background: linear-gradient(135deg, #22c55e, #15803d);
+            color: white;
+            box-shadow: 0 0 15px rgba(34, 197, 94, 0.5);
+        }
+
+        .ps-content strong {
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        .problem-card .ps-content {
+            color: #fecaca;
+        }
+
+        .problem-card .ps-content strong {
+            color: #fca5a5;
+        }
+
+        .solution-card .ps-content {
+            color: #bbf7d0;
+        }
+
+        .solution-card .ps-content strong {
+            color: #86efac;
         }
 
         /* Services Section */
@@ -644,38 +785,65 @@
         </div>
     </section>
 
-    <!-- Problem/Solution -->
+    <!-- Problem/Solution - Psychologischer Kontrast für Conversion -->
     <section class="problem-solution">
         <div class="section-header">
             <h2>Das kennen Sie bestimmt</h2>
+            <p style="color: var(--text-muted); margin-top: 1rem;">Der Unterschied zwischen Stress und Erfolg liegt in der richtigen Entscheidung</p>
         </div>
         <div class="ps-grid">
             <div class="problem-card reveal">
-                <div class="ps-item">
-                    <i class="fas fa-times-circle"></i>
-                    <span><strong>Steuerchaos:</strong> Belege sammeln, Fristen verpassen, Nachzahlungen befürchten</span>
+                <div class="card-header">
+                    <div class="card-header-icon"><i class="fas fa-exclamation-triangle"></i></div>
+                    <h3>Ohne professionelle Beratung</h3>
                 </div>
                 <div class="ps-item">
-                    <i class="fas fa-times-circle"></i>
-                    <span><strong>Keine Zeit:</strong> Buchhaltung frisst Stunden, die Sie für Ihr Business brauchen</span>
+                    <div class="ps-icon"><i class="fas fa-times"></i></div>
+                    <div class="ps-content">
+                        <strong>Steuerchaos im Alltag</strong>
+                        Belege verschwinden, Fristen werden verpasst, böse Überraschungen bei der Nachzahlung
+                    </div>
                 </div>
                 <div class="ps-item">
-                    <i class="fas fa-times-circle"></i>
-                    <span><strong>Unsicherheit:</strong> Zahle ich zu viel? Nutze ich alle Möglichkeiten?</span>
+                    <div class="ps-icon"><i class="fas fa-times"></i></div>
+                    <div class="ps-content">
+                        <strong>Wertvolle Zeit verloren</strong>
+                        Stunden mit Buchhaltung verbringen statt mit dem eigentlichen Geschäft
+                    </div>
+                </div>
+                <div class="ps-item">
+                    <div class="ps-icon"><i class="fas fa-times"></i></div>
+                    <div class="ps-content">
+                        <strong>Geld verschenkt</strong>
+                        Steuervorteile bleiben ungenutzt, weil das Fachwissen fehlt
+                    </div>
                 </div>
             </div>
             <div class="solution-card reveal">
-                <div class="ps-item">
-                    <i class="fas fa-check-circle"></i>
-                    <span><strong>Alles erledigt:</strong> Wir übernehmen Ihre komplette Buchhaltung und Steuererklärung</span>
+                <div class="card-header">
+                    <div class="card-header-icon"><i class="fas fa-shield-alt"></i></div>
+                    <h3>Mit Müller & Partner</h3>
                 </div>
                 <div class="ps-item">
-                    <i class="fas fa-check-circle"></i>
-                    <span><strong>Zeit gewonnen:</strong> Sie konzentrieren sich aufs Geschäft, wir auf die Zahlen</span>
+                    <div class="ps-icon"><i class="fas fa-check"></i></div>
+                    <div class="ps-content">
+                        <strong>Vollständige Entlastung</strong>
+                        Wir übernehmen Ihre gesamte Buchhaltung und Steuererklärung termingerecht
+                    </div>
                 </div>
                 <div class="ps-item">
-                    <i class="fas fa-check-circle"></i>
-                    <span><strong>Optimiert:</strong> Legale Steuergestaltung, die Ihr Geld bei Ihnen lässt</span>
+                    <div class="ps-icon"><i class="fas fa-check"></i></div>
+                    <div class="ps-content">
+                        <strong>Fokus auf Ihr Business</strong>
+                        Sie konzentrieren sich auf das Wachstum, wir kümmern uns um die Zahlen
+                    </div>
+                </div>
+                <div class="ps-item">
+                    <div class="ps-icon"><i class="fas fa-check"></i></div>
+                    <div class="ps-content">
+                        <strong>Maximale Steuerersparnis</strong>
+                        Legale Gestaltungsmöglichkeiten, die Ihr Geld dort lassen wo es hingehört
+                    </div>
                 </div>
             </div>
         </div>
