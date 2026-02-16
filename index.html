@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Müller & Partner Steuerberatung | Frankfurt</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --primary: #1e3a5f;
+            --accent: #d4af37;
+            --accent-rgb: 212, 175, 55;
+            --bg-dark: #0c1929;
+            --bg-light: #fefdfb;
+            --text-primary: #f8fafc;
+            --text-dark: #1e293b;
+            --text-muted: #94a3b8;
+            --glass: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: rgba(12, 25, 41, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-cta {
+            background: linear-gradient(135deg, var(--accent), #c49b2c);
+            color: var(--bg-dark);
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 0 30px rgba(var(--accent-rgb), 0.3);
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 50px rgba(var(--accent-rgb), 0.5);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            padding: 0 5%;
+        }
+
+        .mesh-bg {
+            position: absolute;
+            inset: 0;
+            background: 
+                radial-gradient(at 20% 30%, rgba(212, 175, 55, 0.15) 0px, transparent 50%),
+                radial-gradient(at 80% 20%, rgba(30, 58, 95, 0.3) 0px, transparent 50%),
+                radial-gradient(at 40% 80%, rgba(212, 175, 55, 0.1) 0px, transparent 50%);
+            filter: blur(60px);
+            animation: mesh-move 20s ease infinite alternate;
+        }
+
+        @keyframes mesh-move {
+            0% { transform: scale(1) rotate(0deg); }
+            100% { transform: scale(1.1) rotate(5deg); }
+        }
+
+        .hero-content {
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, var(--accent), #f5d77a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent), #c49b2c);
+            color: var(--bg-dark);
+            padding: 1rem 2.5rem;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            box-shadow: 0 0 40px rgba(var(--accent-rgb), 0.4);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 60px rgba(var(--accent-rgb), 0.6);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-primary);
+            padding: 1rem 2.5rem;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            border: 2px solid var(--glass-border);
+            transition: all 0.3s;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .trust-badges {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .trust-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .trust-badge i {
+            color: var(--accent);
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(10px); }
+        }
+
+        .scroll-indicator i {
+            color: var(--text-muted);
+            font-size: 1.5rem;
+        }
+
+        /* Problem/Solution Section */
+        .problem-solution {
+            padding: 8rem 5%;
+            background: var(--bg-light);
+            color: var(--text-dark);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .ps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .problem-card, .solution-card {
+            padding: 2.5rem;
+            border-radius: 24px;
+        }
+
+        .problem-card {
+            background: linear-gradient(135deg, #fef2f2, #fff);
+            border: 1px solid #fecaca;
+        }
+
+        .solution-card {
+            background: linear-gradient(135deg, #f0fdf4, #fff);
+            border: 1px solid #bbf7d0;
+        }
+
+        .ps-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .ps-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .ps-item i {
+            font-size: 1.25rem;
+            margin-top: 0.2rem;
+        }
+
+        .problem-card .ps-item i {
+            color: #dc2626;
+        }
+
+        .solution-card .ps-item i {
+            color: #16a34a;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 8rem 5%;
+            background: var(--bg-dark);
+        }
+
+        .services .section-header h2 {
+            color: var(--text-primary);
+        }
+
+        .services .section-header p {
+            color: var(--text-muted);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 2.5rem;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--accent), #c49b2c);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 0 30px rgba(var(--accent-rgb), 0.3);
+        }
+
+        .service-icon i {
+            font-size: 1.5rem;
+            color: var(--bg-dark);
+        }
+
+        .service-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .service-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Why Us Section */
+        .why-us {
+            padding: 8rem 5%;
+            background: linear-gradient(180deg, var(--bg-dark), var(--primary));
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 2rem;
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 6rem 5%;
+            background: linear-gradient(135deg, var(--accent), #c49b2c);
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: var(--bg-dark);
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            color: rgba(12, 25, 41, 0.8);
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+
+        .cta-section .btn-dark {
+            background: var(--bg-dark);
+            color: var(--accent);
+            padding: 1.25rem 3rem;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            transition: all 0.3s;
+        }
+
+        .cta-section .btn-dark:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 8rem 5%;
+            background: var(--bg-dark);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 4rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .contact-form {
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 2.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--text-muted);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            color: var(--text-primary);
+            font-family: inherit;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 20px rgba(var(--accent-rgb), 0.2);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            background: linear-gradient(135deg, var(--accent), #c49b2c);
+            color: var(--bg-dark);
+            padding: 1rem;
+            border: none;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 40px rgba(var(--accent-rgb), 0.4);
+        }
+
+        .contact-info h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.75rem;
+            margin-bottom: 2rem;
+            color: var(--accent);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-item i {
+            width: 50px;
+            height: 50px;
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent);
+        }
+
+        .contact-item span {
+            color: var(--text-muted);
+        }
+
+        /* Footer */
+        footer {
+            padding: 2rem 5%;
+            background: rgba(0, 0, 0, 0.3);
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: var(--text-muted);
+            text-decoration: none;
+            margin: 0 1rem;
+        }
+
+        footer a:hover {
+            color: var(--accent);
+        }
+
+        /* Reveal Animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Mobile Menu */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .nav-cta {
+                display: none;
+            }
+            
+            .menu-toggle {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2.25rem;
+            }
+            
+            .trust-badges {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">Müller & Partner</div>
+        <ul class="nav-links">
+            <li><a href="#leistungen">Leistungen</a></li>
+            <li><a href="#warum-wir">Über uns</a></li>
+            <li><a href="#kontakt">Kontakt</a></li>
+        </ul>
+        <a href="#kontakt" class="nav-cta">Beratung anfragen</a>
+        <button class="menu-toggle"><i class="fas fa-bars"></i></button>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="mesh-bg"></div>
+        <div class="hero-content">
+            <h1>Endlich ein Steuerberater, der <span class="gradient-text">Ihre Sprache spricht</span></h1>
+            <p>Persönliche Beratung für Unternehmer und Freiberufler in Frankfurt. Weniger Steuern, mehr Zeit für das Wesentliche.</p>
+            <div class="hero-buttons">
+                <a href="#kontakt" class="btn-primary">
+                    <i class="fas fa-calendar-check"></i>
+                    Kostenlose Erstberatung
+                </a>
+                <a href="#leistungen" class="btn-secondary">Leistungen entdecken</a>
+            </div>
+            <div class="trust-badges">
+                <div class="trust-badge"><i class="fas fa-check-circle"></i> Kostenlos & unverbindlich</div>
+                <div class="trust-badge"><i class="fas fa-clock"></i> Antwort in 24 Stunden</div>
+                <div class="trust-badge"><i class="fas fa-shield-alt"></i> Vertraulich</div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- Problem/Solution -->
+    <section class="problem-solution">
+        <div class="section-header">
+            <h2>Das kennen Sie bestimmt</h2>
+        </div>
+        <div class="ps-grid">
+            <div class="problem-card reveal">
+                <div class="ps-item">
+                    <i class="fas fa-times-circle"></i>
+                    <span><strong>Steuerchaos:</strong> Belege sammeln, Fristen verpassen, Nachzahlungen befürchten</span>
+                </div>
+                <div class="ps-item">
+                    <i class="fas fa-times-circle"></i>
+                    <span><strong>Keine Zeit:</strong> Buchhaltung frisst Stunden, die Sie für Ihr Business brauchen</span>
+                </div>
+                <div class="ps-item">
+                    <i class="fas fa-times-circle"></i>
+                    <span><strong>Unsicherheit:</strong> Zahle ich zu viel? Nutze ich alle Möglichkeiten?</span>
+                </div>
+            </div>
+            <div class="solution-card reveal">
+                <div class="ps-item">
+                    <i class="fas fa-check-circle"></i>
+                    <span><strong>Alles erledigt:</strong> Wir übernehmen Ihre komplette Buchhaltung und Steuererklärung</span>
+                </div>
+                <div class="ps-item">
+                    <i class="fas fa-check-circle"></i>
+                    <span><strong>Zeit gewonnen:</strong> Sie konzentrieren sich aufs Geschäft, wir auf die Zahlen</span>
+                </div>
+                <div class="ps-item">
+                    <i class="fas fa-check-circle"></i>
+                    <span><strong>Optimiert:</strong> Legale Steuergestaltung, die Ihr Geld bei Ihnen lässt</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="services" id="leistungen">
+        <div class="section-header">
+            <h2>Unsere Leistungen</h2>
+            <p style="color: var(--text-muted); max-width: 600px; margin: 0 auto;">Maßgeschneiderte Lösungen für Ihre steuerlichen Anforderungen</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card reveal">
+                <div class="service-icon"><i class="fas fa-calculator"></i></div>
+                <h3>Laufende Buchhaltung</h3>
+                <p>Monatliche Finanzbuchhaltung mit aktuellen Auswertungen und BWA</p>
+            </div>
+            <div class="service-card reveal">
+                <div class="service-icon"><i class="fas fa-file-invoice"></i></div>
+                <h3>Jahresabschluss</h3>
+                <p>Bilanz, GuV und alle Pflichtberichte termingerecht erstellt</p>
+            </div>
+            <div class="service-card reveal">
+                <div class="service-icon"><i class="fas fa-hand-holding-usd"></i></div>
+                <h3>Steueroptimierung</h3>
+                <p>Legale Gestaltungsmöglichkeiten für minimale Steuerlast</p>
+            </div>
+            <div class="service-card reveal">
+                <div class="service-icon"><i class="fas fa-users"></i></div>
+                <h3>Lohnabrechnung</h3>
+                <p>Komplette Gehaltsabrechnung inkl. Meldungen an Behörden</p>
+            </div>
+            <div class="service-card reveal">
+                <div class="service-icon"><i class="fas fa-rocket"></i></div>
+                <h3>Existenzgründung</h3>
+                <p>Von der Rechtsform bis zum ersten Jahresabschluss begleitet</p>
+            </div>
+            <div class="service-card reveal">
+                <div class="service-icon"><i class="fas fa-balance-scale"></i></div>
+                <h3>Betriebsprüfung</h3>
+                <p>Professionelle Begleitung und Vertretung bei Finanzamtsprüfungen</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Us -->
+    <section class="why-us" id="warum-wir">
+        <div class="section-header">
+            <h2>Warum Müller & Partner?</h2>
+        </div>
+        <div class="stats-grid">
+            <div class="stat-card reveal">
+                <div class="stat-number">15+</div>
+                <div class="stat-label">Jahre Erfahrung</div>
+            </div>
+            <div class="stat-card reveal">
+                <div class="stat-number">24h</div>
+                <div class="stat-label">Schnelle Reaktion</div>
+            </div>
+            <div class="stat-card reveal">
+                <div class="stat-number">1:1</div>
+                <div class="stat-label">Persönlicher Ansprechpartner</div>
+            </div>
+            <div class="stat-card reveal">
+                <div class="stat-number">FFM</div>
+                <div class="stat-label">Regional verwurzelt</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <h2>Bereit für stressfreie Steuern?</h2>
+        <p>Lernen Sie uns in einem unverbindlichen Erstgespräch kennen.</p>
+        <a href="#kontakt" class="btn-dark">
+            <i class="fas fa-calendar-alt"></i>
+            Jetzt Termin vereinbaren
+        </a>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact" id="kontakt">
+        <div class="contact-grid">
+            <div class="contact-form reveal">
+                <form>
+                    <div class="form-group">
+                        <label for="name">Ihr Name</label>
+                        <input type="text" id="name" placeholder="Max Mustermann">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">E-Mail</label>
+                        <input type="email" id="email" placeholder="max@beispiel.de">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Telefon</label>
+                        <input type="tel" id="phone" placeholder="+49 123 456789">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Ihre Nachricht</label>
+                        <textarea id="message" placeholder="Wie können wir Ihnen helfen?"></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Anfrage senden</button>
+                </form>
+            </div>
+            <div class="contact-info reveal">
+                <h3>Kontakt</h3>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Kaiserstraße 42<br>60329 Frankfurt am Main</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <span>+49 69 123 456 78</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>info@mueller-partner.de</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-clock"></i>
+                    <span>Mo-Fr: 9:00 - 18:00 Uhr</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 Müller & Partner Steuerberatung</p>
+        <p>
+            <a href="#">Impressum</a>
+            <a href="#">Datenschutz</a>
+        </p>
+    </footer>
+
+    <!-- Scroll Animation Script -->
+    <script>
+        const reveals = document.querySelectorAll('.reveal');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
+        reveals.forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
